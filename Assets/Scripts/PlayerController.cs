@@ -8,6 +8,7 @@ public class Boundary {
 }
 
 public class PlayerController : MonoBehaviour {
+	private AudioSource audioSource;
 	private Rigidbody rb;
 	private float nextFire;
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	public Transform shotSpawn;
 
 	void Start () {
+		audioSource = GetComponent<AudioSource> ();
 		rb = GetComponent<Rigidbody> ();
 	}
 
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButton("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			audioSource.Play ();
 		}
 	}
 }
