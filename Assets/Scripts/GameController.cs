@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	public float startWait;
 	public float waveWait;
 	public int hazardCount;
-	public GameObject hazard;
+	public GameObject[] hazards;
 	public GUIText gameOverText;
 	public GUIText restartText;
 	public GUIText scoreText;
@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour {
 
 		while (true) {
 			for (int i = 0; i < hazardCount; i++) {
+				GameObject hazard = hazards[Random.Range(0, hazards.Length)];
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (hazard, spawnPosition, spawnRotation);
